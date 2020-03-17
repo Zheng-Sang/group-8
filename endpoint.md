@@ -28,8 +28,8 @@ application/json
 }
 ```
 
-## GET /db/get
-get products from db for recommendation
+## PUT /db/product
+post product id to database
 
 ### Request
 
@@ -38,10 +38,11 @@ get products from db for recommendation
 application/json
 ```
 
-#### Params
+#### Body
 ```
 {
     "customer_id": SOME_CUSTOMER_ID,
+    "product_id": SOME_PRODUCT_ID
 }
 ```
 
@@ -54,7 +55,7 @@ application/json
 #### Body
 ```json
 {
-    ["Product_id"]
+    "success"
 }
 ```
 
