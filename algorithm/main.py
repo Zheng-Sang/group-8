@@ -6,9 +6,10 @@ from recommendation_spend_behavior import Spend_behavior_Prediction
 
 app = Flask(__name__)
 CORS(app)
-
+userid = "123"
 predict = Spend_behavior_Prediction()
-
+predict.loadData()
+rrecommend_list = predict.Recommendation(userid)
 @app.route("/", methods = ["GET"])
 def handle_recommend():
     customer_id = request.args.get("customer_id")

@@ -4,8 +4,8 @@ import abc
 from builtins import isinstance
 import pickle
 import numpy as np
-# import tool
-
+import tool
+from database import database
 ##correlation coefficient
 class DataType:
     Like_dislike = 1       # Like, purchase
@@ -56,16 +56,17 @@ class Spend_behavior_Prediction(object):
             print("Load failed!")
             return None
 
-    def loadData(self, data):
-        if isinstance(data, dict):
-            self.prefs = data
-        elif isinstance(data, str):
-            # self.prefs = tool.loadData(data)
-            pass
-        self.itemList = {}
-        for user in self.prefs:
-            for item in self.prefs[user]:
-                self.itemList[item] = None
+    def loadData(self):
+        # if isinstance(data, dict):
+        #     self.prefs = data
+        # elif isinstance(data, str):
+        #     # self.prefs = tool.loadData(data)
+        #     pass
+        # self.itemList = {}
+        # for user in self.prefs:
+        #     for item in self.prefs[user]:
+        #         self.itemList[item] = None
+        self.prefs, self.itemList = database.load_data()
     
     def getNearestNeighbors(self, target_user, measure, number_of_neighbours = None):
         similarities = [(measure(self.prefs[target_user], self.prefs[other_user]), other_user) for other_user in self.prefs if target_user != other_user]
@@ -158,3 +159,10 @@ class Spend_behavior_Prediction(object):
         if topN != None:
             recommendation = recommendation[0:topN]
         return recommendation
+
+if __name__ == '__main__':
+    userid = "123"
+    recommend = Spend_behavior_Prediction()
+    recommend.loadData()
+    recommend_list = recommend.Recommendation(userid) 
+    return recommend_list
