@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 
 url = "mongodb://127.0.0.1:27017/UA1";
-mongoose.connect(url,function(err){
+db = mongoose.connect(url,function(err){
     if(!err)
     {
         console.log("Connect to DB Successfully!");
@@ -20,11 +20,25 @@ mongoose.connect(url,function(err){
 })
 
 var userSchema = mongoose.Schema({
-    customer_id = String,
-    product_list = [String]
+    customer_id : String,
+    product_list : [String]
 })
 
 var userModel = mongoose.model('User', userSchema);
+
+app.put('/application/json', function(req, res){
+    collection = db.collection('Users');
+    data = req.body;
+    collection.insert(data, function(err, result) { 
+        if(err)
+        {
+            console.log('Error:'+ err);
+            return;
+        } 
+    })
+})
+ 
+
 
 
 const corsConfig = function(req, res, next) {
