@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/united-airlines-logo.png">
+    <b-navbar toggleable="lg" type="dark" variant="dark"> 
+     <b-navbar-brand href="#">NavBar</b-navbar-brand>
+    </b-navbar>
     <router-view/>
   </div>
 </template>
