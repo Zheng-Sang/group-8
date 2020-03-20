@@ -27,7 +27,6 @@
         </b-carousel-slide-caption>
         <b-button :href="items[recomm - 1].link" variant="dark" @click="handle_buy(items[recomm - 1].id)">Learn more</b-button>
       </b-carousel-slide>
-
       </b-carousel>
     </b-container> -->
 
@@ -77,7 +76,6 @@
 
 <script>
 import axios from 'axios';
-
 export default {
   data () {
     return {
