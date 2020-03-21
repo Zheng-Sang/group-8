@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <Recommendation/>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import Recommendation from './components/Recommendation.vue'
+import Login from './components/Login.vue'
 import Vue from 'vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
@@ -17,7 +18,8 @@ Vue.use(BootstrapVue)
 export default {
   name: 'App',
   components: {
-    Recommendation
+    Recommendation,
+    Login
   }
 }
 </script>
