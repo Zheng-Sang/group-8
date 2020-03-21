@@ -1,3 +1,4 @@
+//Author
 <template>
   <div class="hello">
     <img alt="Vue logo" src="../assets/1232.png">
