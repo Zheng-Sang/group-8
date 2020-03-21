@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div>
     <!-- <b-jumbotron header="Recommend for you">
       <b-button variant="outline-dark" @click="get_recommend()">refresh</b-button>
     </b-jumbotron> -->
@@ -30,48 +30,68 @@
       </b-carousel>
     </b-container> -->
 
+<!-- navbar section -->
 <div>
-  <b-jumbotron bg-variant="light" text-variant="dark" border-variant="dark">
-    <template v-slot:header>Customer Name</template>
+  <b-navbar toggleable="lg" type="dark" class="navbar navbar-custom">
 
-    <hr class="my-4">
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav class="nav-item active">
+        <b-nav-item href="#" class="nav-link">&lsaquo;</b-nav-item>
+      </b-navbar-nav>
+      <div class="navbar-header">  
+        <b-navbar-brand class="navbar-brand">Customize Your Trip</b-navbar-brand>
+      </div>
+      <b-navbar-nav class="nav-item active ml-auto">
+        <b-nav-item href="#" class="nav-link">&rsaquo;</b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</div>
+
+<!-- customer info section -->
+<div>
+  <b-jumbotron border-variant="dark" class="jumbotron jumbotron-custom">
+    <p class="jumbotron-header">name holder</p>
+
+  <li class="jumbotron-body">
     <p>phone: +1 000-000-000</p>
     <p>MileagePlus: XXXXXXXX</p>
-    <p>Adult(18-64)</p>
-    <p>{{account}}</p>
+    <p>account balance: {{account}}</p>
+  </li>
   </b-jumbotron>
 </div>
 
+<!-- recommendation section -->
+  <div>
     <b-container fluid="lg">
       <ul>
         <li v-for="recomm in recomms" :key="recomm.title">       
-          <b-card no-body class="overflow-hidden" style="max-width: 540px;">
-            <b-row no-gutters>
-              <b-col md="6">
-                <b-card-img :src="items[recomm - 1].src" class="rounded-0"></b-card-img>
-              </b-col>
-              <b-col md="6">
-                <b-card-body>
-                  <b-card-body-title>
-                    {{items[recomm - 1].title}}
-                  </b-card-body-title>
-                  <b-card-text>
-                    <p>{{items[recomm - 1].price}}</p>
-                  </b-card-text>
-                  <br>
-                </b-card-body>
-                <b-button :href="items[recomm].link" variant="dark" >more information</b-button>
-                <b-button variant="dark" @click="handle_buy(items[recomm])" :disabled="account < items[recomm].price">buy with miles</b-button>
-              </b-col>
-            </b-row>
+          <b-card no-body class="overflow-hidden card">
+            <b-card-img :src="items[recomm - 1].src" class="rounded-0"></b-card-img>
+            <b-card-body class="card-body">
+              <b-card-text class="card-title">
+                {{items[recomm - 1].title}}
+              </b-card-text>
+              <b-card-text class="card-text">
+                <p>price: {{items[recomm - 1].price}} miles</p>
+              </b-card-text>
+              <a :href="items[recomm].link" variant="dark" class="card-link">more information</a>
+              <b-button @click="handle_buy(items[recomm])" :disabled="account < items[recomm].price" class="card-button" >buy with miles</b-button>
+            </b-card-body>
             <br>
           </b-card>
         </li>
       </ul>
-      <b-button variant="outline-dark" @click="get_recommend()">refresh</b-button>
+      <!-- <b-button variant="outline-dark" @click="get_recommend()">test recommendation button</b-button> -->
     </b-container>
-    </div>
+  </div>
+
+  <!-- view all products -->
+  <a href=#>view all products</a>
+
+  </div>
 </template>
 
 <script>
@@ -167,5 +187,69 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.navbar-custom {
+  background-color: #030438;
+}
+
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+    font-size: 120%;
+}
+
+.navbar-custom .navbar-header {
+    text-align: center;
+    width: 100%;
+}
+.navbar-custom .navbar-brand {float:none;}
+
+.jumbotron-custom {
+  background: #ffffff;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.jumbotron-custom .jumbotron-header {
+    text-align: left;
+    padding-left: 8px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 150%;
+}
+
+.jumbotron-custom .jumbotron-body {
+    text-align: left;
+    width: 100%;
+    font-weight: 100;
+    font-size: 100%;
+}
+
+.card {
+  max-width: 250px;
+}
+
+.card .card-body .card-title {
+  font-size: 100%;
+  font-weight: 500;
+  text-align: left;
+}
+
+.card .card-body .card-text {
+  font-size: 80%;
+  text-align: left;
+  padding-top: 0px;
+}
+
+.card .card-body .card-link {
+  font-size: 80%;
+  text-align: left;
+}
+
+.card .card-body .card-button {
+  color: #ffffff;
+  background-color: #216de7d2;
+  border-color: #ffffff;
 }
 </style>

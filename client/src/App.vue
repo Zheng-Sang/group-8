@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <HelloWorld/>
+    <Recommendation/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Recommendation from './components/Recommendation.vue'
 import Vue from 'vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
@@ -17,12 +17,15 @@ Vue.use(BootstrapVue)
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Recommendation
   }
 }
 </script>
 
 <style lang="scss">
+@import './assets/custom.scss';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -31,9 +34,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>
-
-<style lang="scss">
-@import './assets/custom.scss';
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
 </style>
