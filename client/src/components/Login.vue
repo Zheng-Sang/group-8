@@ -4,10 +4,10 @@
     <img alt="Vue logo" src="../assets/1232.png">
     <h1>{{ msg }}</h1>
     <div>
-      <el-input placeholder="Username"  clearable class="input_style"></el-input>
+      <el-input placeholder="Username"  v-model="username" clearable class="input_style" ></el-input>
     </div>
     <div>
-      <el-input placeholder="Password"  clearable class="input_style"></el-input>
+      <el-input type = "password" placeholder="Password" v-model="password"  clearable class="input_style" ></el-input>
     </div>
     <div>
       <el-button type="primary" class="login_style">Login</el-button>
@@ -20,8 +20,17 @@ export default {
   name: 'Login',
   props: {
     msg: String
+  },
+    data() {
+    return {
+      username: '',
+      password: ''
+    }
   }
-}
+
+  
+};
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -22,6 +22,7 @@ export default {
     Login
   }
 }
+
 </script>
 
 <style lang="scss">
